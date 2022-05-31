@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+th{
+  font-size:18px;
+}
+
+td{
+  width: 33%;
+}
+
+div{
+  padding-bottom: 2%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+button{
+  margin: 15px;
+  font-size: 18px;
+}
