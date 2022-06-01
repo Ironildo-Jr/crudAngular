@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Angular';
-  imgconceito = 'C:\Users\junio\Teste-Conceito\Angular\Imagens\conceito-tecnologia.png';
-  
-  Fornecedores(){
-    
-  }
+  itens = [
+    { id: 1, nome: 'alex', cpf: 1111111, email: 'onn@com.br' },
+    { id: 2, nome: 'iron', cpf: 1122222, email: 'onasdasdn@com.br' },
+  ];
 }
