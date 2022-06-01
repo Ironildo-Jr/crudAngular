@@ -1,0 +1,10 @@
+.footer {
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  bottom: 0;
+}
+
+.footer span {
+  font-size: small;
+}
