@@ -6,14 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./generic-table.component.css'],
 })
 export class GenericTableComponent implements OnInit {
-  @Input() itens: any[] = [{}];
+  @Input() itens: any[] = [];
   @Input() podeEditar: boolean = true;
   @Input() podeExcluir: boolean = true;
   colunasplus: string[] = [];
   colunas!: string[];
 
   ngOnInit() {
-    if (this.itens == []) this.colunas = Object.keys(this.itens[0]);
+    if (!(this.itens == [])) this.colunas = Object.keys(this.itens[0]);
     else this.colunas = [];
 
     if (this.podeEditar || this.podeExcluir)
