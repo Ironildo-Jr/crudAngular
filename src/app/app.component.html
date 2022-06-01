@@ -1,5 +1,12 @@
 <app-header></app-header>
-
-<app-menu></app-menu>
-
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Produtos">
+    <app-generic-table
+      [itens]="itens"
+      [podeEditar]="true"
+      [podeExcluir]="true"
+    ></app-generic-table>
+  </mat-tab>
+  <mat-tab label="Fornecedor"> HEllo </mat-tab>
+</mat-tab-group>
 <app-footer></app-footer>
