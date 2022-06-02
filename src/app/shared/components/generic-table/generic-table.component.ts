@@ -38,7 +38,7 @@ export class GenericTableComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(GenericDialogComponent, {
       width: '250px',
-      data: [{}, this.colunas],
+      data: [this.colunas],
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -52,7 +52,7 @@ export class GenericTableComponent implements OnInit {
     console.log(item);
     const dialogRef = this.dialog.open(GenericDialogComponent, {
       width: '250px',
-      data: [item, this.colunas],
+      data: [this.colunas, item],
     });
 
     dialogRef.afterClosed().subscribe((result) => {

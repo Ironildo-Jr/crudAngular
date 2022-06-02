@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Fornecedores</h1>
+<h1 mat-dialog-title *ngIf="item == {}">Criar</h1>
+<h1 mat-dialog-title *ngIf="item">Alterar</h1>
 <div mat-dialog-content>
+  <form [formGroup]="form"></form>
   <mat-form-field appearance="fill" *ngFor="let campo of campos">
     <mat-label>{{ campo }}</mat-label>
-    <input matInput [(ngModel)]="item[campo]" />
+    <input matInput [formControlName]="campo" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
