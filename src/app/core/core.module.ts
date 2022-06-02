@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,7 +12,7 @@ const COMPONENTS = [HeaderComponent, FooterComponent];
 
 @NgModule({
   declarations: [COMPONENTS],
-  imports: [BrowserModule, MaterialModule, SharedModule],
+  imports: [BrowserModule, HttpClientModule, MaterialModule, SharedModule],
   exports: [COMPONENTS],
 })
 export class CoreModule {}

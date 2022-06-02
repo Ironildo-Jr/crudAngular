@@ -1,6 +1,8 @@
 import { MatDialog } from '@angular/material/dialog';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { GenericDialogComponent } from '../generic-dialog/generic-dialog.component';
+import { ApiService } from 'src/app/core/services/api.service';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-generic-table',
@@ -8,21 +10,30 @@ import { GenericDialogComponent } from '../generic-dialog/generic-dialog.compone
   styleUrls: ['./generic-table.component.css'],
 })
 export class GenericTableComponent implements OnInit {
-  @Input() itens: any[] = [];
+  @ViewChild(MatTable) tabela!: MatTable<any>;
+  @Input() caminho!: string;
   @Input() podeEditar: boolean = true;
   @Input() podeExcluir: boolean = true;
   colunasplus: string[] = [];
-  colunas!: string[];
+  colunas: string[] = [];
+  itens: any[] = [];
 
   ngOnInit() {
-    if (!(this.itens == [])) this.colunas = Object.keys(this.itens[0]);
-    else this.colunas = [];
-
-    if (this.podeEditar || this.podeExcluir)
-      this.colunasplus = [...this.colunas, 'acoes'];
-    else this.colunasplus = [...this.colunas];
+    this.get();
   }
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private apiService: ApiService) {}
+
+  get() {
+    this.apiService.get(this.caminho).subscribe((res: any[]) => {
+      if (res) {
+        this.colunas = Object.keys(res[0]);
+        this.itens = res;
+      }
+      if (this.podeEditar || this.podeExcluir)
+        this.colunasplus = [...this.colunas, 'acoes'];
+      else this.colunasplus = [...this.colunas];
+    });
+  }
 
   add(): void {
     const dialogRef = this.dialog.open(GenericDialogComponent, {
@@ -31,19 +42,21 @@ export class GenericTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      this.apiService
+        .add(this.caminho, result)
+        .subscribe(() => this.get());
     });
   }
 
   editar(item: any): void {
-    console.log(item)
+    console.log(item);
     const dialogRef = this.dialog.open(GenericDialogComponent, {
       width: '250px',
       data: [item, this.colunas],
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      this.apiService.update(this.caminho, result).subscribe();
     });
   }
 
