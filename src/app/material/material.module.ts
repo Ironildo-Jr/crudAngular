@@ -8,20 +8,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-const MODULES = [
-  MatTabsModule,
-  MatToolbarModule,
-  MatTableModule,
-  MatButtonModule,
-  MatIconModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatInputModule,
-];
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  imports: [MODULES],
-  exports: [MODULES],
+  exports: [
+    MatTabsModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+  ],
 })
 export class MaterialModule {}
