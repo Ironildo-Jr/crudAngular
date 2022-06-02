@@ -60,5 +60,7 @@ export class GenericTableComponent implements OnInit {
     });
   }
 
-  excluir(id: number): void {}
+  excluir(id: number): void {
+    this.apiService.delete(this.caminho,id)
+  }
 }

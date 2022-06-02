@@ -24,4 +24,8 @@ export class ApiService {
   add(caminho: string, item: any): Observable<any> {
     return this.http.post(`${environment.baseUrl}/${caminho}`, item);
   }
+
+  delete(caminho: string, id: number){
+    return this.http.delete(`${environment.baseUrl}/${caminho}/${id}`)
+  }
 }
