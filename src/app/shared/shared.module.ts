@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterialModule } from '../material/material.module';
@@ -10,7 +11,7 @@ const COMPONENTS = [GenericTableComponent, GenericDialogComponent];
 
 @NgModule({
   declarations: [COMPONENTS],
-  imports: [BrowserModule, MaterialModule],
+  imports: [BrowserModule, MaterialModule, FormsModule],
   exports: [COMPONENTS],
 })
 export class SharedModule {}

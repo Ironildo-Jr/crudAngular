@@ -1,4 +1,6 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
+import { GenericDialogComponent } from '../generic-dialog/generic-dialog.component';
 
 @Component({
   selector: 'app-generic-table',
@@ -20,10 +22,30 @@ export class GenericTableComponent implements OnInit {
       this.colunasplus = [...this.colunas, 'acoes'];
     else this.colunasplus = [...this.colunas];
   }
+  constructor(public dialog: MatDialog) {}
 
-  add(): void {}
+  add(): void {
+    const dialogRef = this.dialog.open(GenericDialogComponent, {
+      width: '250px',
+      data: [{}, this.colunas],
+    });
 
-  editar(item: any): void {}
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
+  }
+
+  editar(item: any): void {
+    console.log(item)
+    const dialogRef = this.dialog.open(GenericDialogComponent, {
+      width: '250px',
+      data: [item, this.colunas],
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
+  }
 
   excluir(id: number): void {}
 }

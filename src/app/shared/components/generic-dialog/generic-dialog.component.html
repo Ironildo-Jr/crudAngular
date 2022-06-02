@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Fornecedores</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" *ngFor="let campo of campos">
+    <mat-label>{{ campo }}</mat-label>
+    <input matInput [(ngModel)]="item[campo]" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="item" cdkFocusInitial>Ok</button>
+</div>

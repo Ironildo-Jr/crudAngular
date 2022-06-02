@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular';
   itens = [
-    { id: 1, nome: 'alex', cpf: 1111111, email: 'onn@com.br' },
-    { id: 2, nome: 'iron', cpf: 1122222, email: 'onasdasdn@com.br' },
+    { id: 1, preco: 12321, desc: 'oi' },
+    { id: 2, preco: 123123, desc: 'sdfs' },
   ];
 }
